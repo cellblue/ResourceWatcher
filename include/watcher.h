@@ -7,7 +7,7 @@
 namespace resource_watcher{
 class Watcher{
 private:
-    std::shared_ptr<system_data> sys_data_; 
+    static std::shared_ptr<system_data> sys_data_; 
 public:
     Watcher();
     virtual void dataCollection();
