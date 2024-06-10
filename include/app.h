@@ -12,7 +12,7 @@ namespace resource_watcher {
 
 class App{
 private:
-    std::vector<std::unique_ptr<Watcher> > sys_watchers_;
+    std::map<std::string, std::unique_ptr<Watcher>> sys_watchers_;
     std::unique_ptr<TimerManager> timer_manager_;
 public:
     App(); 

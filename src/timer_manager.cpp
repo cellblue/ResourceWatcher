@@ -1,6 +1,6 @@
 #include "timer_manager.h"
 namespace resource_watcher{
-void TimerManager::addTimer(int id, std::chrono::milliseconds delay, std::function<void()> callback){
+void TimerManager::addTimer(std::string name, std::chrono::milliseconds delay, std::function<void()> callback){
         int timerFd = timerfd_create(CLOCK_MONOTONIC, TFD_NONBLOCK | TFD_CLOEXEC);
         if (timerFd == -1) {
             perror("timerfd_create");
@@ -23,7 +23,7 @@ void TimerManager::addTimer(int id, std::chrono::milliseconds delay, std::functi
             exit(EXIT_FAILURE);
         }
 
-        timers[id] = {timerFd, std::move(callback)};
+        timers[timerFd] = {name, std::move(callback)};
 }
 
 void TimerManager::run(){

@@ -22,14 +22,14 @@ public:
         close(epollFd);
     }
 
-    void addTimer(int id, std::chrono::milliseconds delay, std::function<void()> callback);
+    void addTimer(std::string name, std::chrono::milliseconds delay, std::function<void()> callback);
 
     void run();
 
 private:
     int epollFd;
     int maxEvents;
-    std::map<int, std::pair<int, std::function<void()>>> timers;
+    std::map<int, std::pair<std::string, std::function<void()>>> timers;
 };
 
 };
