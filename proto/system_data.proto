@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+message Cpu {
+    
+}
+
+message Memory{
+
+}
+
+message Disk{
+
+}
+
+message Process{
+    
+}
