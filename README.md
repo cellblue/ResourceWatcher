@@ -23,8 +23,15 @@
 数据格式:
     protobuf
     
-
-
-
 录制模式：
     把数据写入到本地文件
+
+类设计：
+    数据基本类型： proto
+
+    数据采集模块：
+        抽象基类 watcher 
+        子类 cpu、memory、disk、process
+        把接口注册到 timermanager_ 中 , 1s 调用一次
+    数据处理模块：
+

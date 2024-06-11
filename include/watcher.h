@@ -2,12 +2,13 @@
 #include <any>
 #include <map>
 #include <filesystem>
-
+#include <memory>
+#include "system_data.pb.h"
 namespace resource_watcher{
 class Watcher{
 private:
-    std::string pid_;
+    std::shared_ptr<system_data> sys_data_; 
 public:
-    virtual void getData(std::map<std::string,std::any> &data) = 0;
+    virtual void dataCollection();
 };
 };
