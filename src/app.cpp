@@ -1,9 +1,7 @@
-#include "../include/app.h"
+#include "app.h"
 
 namespace resource_wather{
-App::app()
-    for(){
-        
-    }
+App::App(){
+    
 }
 };

@@ -1,17 +1,44 @@
 syntax = "proto2";
 
-message Cpu {
-    
+message CPU {
+    optional string name = 1; // CPU seq 
+    optional float usage = 2;
+    optional float user_usage = 3;
+    optional float system_usage = 4;
+    optional float irq_usage = 5;
+    optional float softirq_usage = 6;
+    optional int32 running_time = 7;
 }
 
 message Memory{
-
+    optional string name = 1; // mem or swap
+    optional float total = 2;
+    optional float used = 3;
+    optional float free = 4;
+    optional float shared = 5;
+    optional float buffer_or_cached = 6;
 }
 
 message Disk{
-
+    optional string file_system = 1;
+    optional float total = 2;
+    optional float usage = 3;
+    optional string mount = 4;
 }
 
 message Process{
-    
+    optional int32 total = 1;
+    optional int32 running = 2;
+    optional int32 sleeping = 3;
+    optional int32 stopped = 4;
+    optional int32 zombie = 5;
+}
+
+message system_data{
+    optional CPU sys_cpu = 1;
+    repeated CPU cpus = 2;
+    optional Memory phy_mem = 3;
+    optional Memory swap_mem = 4;
+    repeated Disk disks = 5;
+    repeated Process tasks = 6;
 }
