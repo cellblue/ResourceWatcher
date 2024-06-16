@@ -1,3 +1,5 @@
+#pragma once
+
 #include "watcher.h"
 
 namespace resource_watcher{

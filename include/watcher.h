@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 #include <any>
 #include <map>
@@ -6,7 +8,7 @@
 #include "system_data.pb.h"
 namespace resource_watcher{
 class Watcher{
-private:
+protected:
     static std::shared_ptr<system_data> sys_data_; 
 public:
     Watcher();

@@ -2,11 +2,11 @@
 
 namespace resource_watcher{
 
-App::App() : timer_manager_(std::make_unique<TimerManager>()){
+App::App() : timer_manager_(std::make_unique<TimerManager>(512)){
     sys_watchers_["cpu"] = std::make_unique<CPUWatcher>();
-    sys_watchers_["mem"] = std::make_unique<MemoryWatcher>();
-    sys_watchers_["disks"] = std::make_unique<DiskWatcher>();
-    sys_watchers_["tasks"] = std::make_unique<ProcessWatcher>();
+    // sys_watchers_["mem"] = std::make_unique<MemoryWatcher>();
+    // sys_watchers_["disks"] = std::make_unique<DiskWatcher>();
+    // sys_watchers_["tasks"] = std::make_unique<ProcessWatcher>();
 }
 
 App::~App() {
