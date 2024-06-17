@@ -8,4 +8,4 @@ public:
     ProcessWatcher();
     virtual void dataCollection();
 };
-};
+} // namespace resource_watcher

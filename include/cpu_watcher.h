@@ -49,4 +49,4 @@ public:
     CPUWatcher() = default;
     void dataCollection() override;
 };
-};
+} // namespace resource_watcher

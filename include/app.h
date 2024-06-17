@@ -23,4 +23,4 @@ public:
     void stop();
 };
 
-};
+}// namespace resource_watcher

@@ -15,7 +15,7 @@ App::~App() {
 
 void App::start() {
     for(const auto &[reasource, watcher] : sys_watchers_){
-        timer_manager_->addTimer(reasource,std::chrono::seconds(500),[&watcher](){
+        timer_manager_->addTimer(reasource,std::chrono::milliseconds(500),[&watcher](){
             watcher->dataCollection();
         });
     }
@@ -26,4 +26,4 @@ void App::stop() {
     
 }
 
-};
+} // namespace resource_watcher

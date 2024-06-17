@@ -9,14 +9,14 @@ void TimerManager::addTimer(std::string name, std::chrono::milliseconds delay, s
 
         itimerspec its;
         its.it_value = {delay.count() / 1000, (delay.count() % 1000) * 1000000L};
-        its.it_interval = {0, 0};
+        its.it_interval = {delay.count() / 1000, (delay.count() % 1000) * 1000000L};
         if (timerfd_settime(timerFd, 0, &its, nullptr) == -1) {
             perror("timerfd_settime");
             exit(EXIT_FAILURE);
         }
 
         epoll_event ev;
-        ev.events = EPOLLIN | EPOLLET;
+        ev.events = EPOLLOUT | EPOLLIN | EPOLLET;
         ev.data.fd = timerFd;
         if (epoll_ctl(epollFd, EPOLL_CTL_ADD, timerFd, &ev) == -1) {
             perror("epoll_ctl");
@@ -34,11 +34,10 @@ void TimerManager::run(){
             perror("epoll_wait");
             exit(EXIT_FAILURE);
         }
-
         for (int i = 0; i < nfds; ++i) {
             auto& [timer_id, timer_callback] = timers[events[i].data.fd];
             timer_callback();
-            // Reset the timer if needed
+            
             itimerspec its;
             its.it_value = {0, 0};
             its.it_interval = {0, 0};
@@ -49,4 +48,4 @@ void TimerManager::run(){
         }
     }       
 }
-};
+} // namespace resource_watcher

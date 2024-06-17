@@ -8,4 +8,4 @@ public:
     DiskWatcher();
     virtual void dataCollection();
 };
-};
+} // namespace resource_watcher

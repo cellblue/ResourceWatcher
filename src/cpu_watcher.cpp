@@ -5,6 +5,7 @@
 // #include <ranges>
 #include <cassert>
 #include <numeric>
+#include <charconv>
 #include "common.h"
 namespace resource_watcher{
 
@@ -13,13 +14,19 @@ CPUWatcher::CpuStat CPUWatcher::getCpuStat(){
     std::string line;
     std::getline(file, line);
     std::string_view sv{line};
+    std::cout << line << std::endl;
     CpuStat values;
     int index = 0;
-    for (auto token = sv.find_first_not_of(' '); token != std::string_view::npos; ) {
+    for (auto token = sv.find_first_not_of(' '); token != std::string_view::npos;) {
         auto next_token = sv.find(' ', token);
-        values[static_cast<CpuTimeType>(index)] = std::stol(std::string(sv.substr(token, next_token - token)));
-        values[CpuTimeType::Total] += values[static_cast<CpuTimeType>(index)];
-        index++;
+        auto str = sv.substr(token, next_token - token);
+        int64_t time_stamp = 0;
+        auto res = std::from_chars(str.begin(),str.end(), time_stamp);
+        if(res.ec == std::errc()){
+            values[static_cast<CpuTimeType>(index)] = time_stamp;
+            values[CpuTimeType::Total] += values[static_cast<CpuTimeType>(index)];
+            index++;
+        }
         token = sv.find_first_not_of(' ', next_token);
     }
     return values;
@@ -75,7 +82,6 @@ void CPUWatcher::dataCollection() {
     // const unsigned int num_cpus = std::thread::hardware_concurrency();
     // 获取sys_cpu
     auto sys_cpu = Watcher::sys_data_->mutable_sys_cpu();
-
     start_cpu_stat_ = getCpuStat();
     std::this_thread::sleep_for(std::chrono::milliseconds(10));
     end_cpu_stat_ = getCpuStat(); 
@@ -87,6 +93,6 @@ void CPUWatcher::dataCollection() {
     sys_cpu->set_irq_usage(getIrqUsage());
     sys_cpu->set_softirq_usage(getSoftirqUsage());
     sys_cpu->set_running_time(getRunningTime());
-
+    std::cout << sys_cpu->DebugString() << std::endl;
 }
-};
+} // namespace resource_watcher

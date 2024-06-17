@@ -15,4 +15,4 @@ public:
     virtual void dataCollection() = 0;
     virtual ~Watcher() = default;
 };
-};
+} // namespace resource_watcher

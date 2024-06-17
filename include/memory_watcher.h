@@ -8,4 +8,4 @@ public:
     MemoryWatcher();
     virtual void dataCollection();
 };
-};
+} // namespace resource_watcher

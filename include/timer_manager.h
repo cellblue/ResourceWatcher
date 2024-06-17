@@ -34,4 +34,4 @@ private:
     std::map<int, std::pair<std::string, std::function<void()>>> timers;
 };
 
-};
+} // namespace resource_watcher
