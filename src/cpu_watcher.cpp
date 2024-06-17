@@ -16,6 +16,7 @@ CPUWatcher::CpuStat CPUWatcher::getCpuStat(){
     std::string_view sv{line};
     std::cout << line << std::endl;
     CpuStat values;
+    values[CpuTimeType::Total] = 0;
     int index = 0;
     for (auto token = sv.find_first_not_of(' '); token != std::string_view::npos;) {
         auto next_token = sv.find(' ', token);
