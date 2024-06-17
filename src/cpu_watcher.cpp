@@ -2,7 +2,7 @@
 #include <filesystem>
 #include <fstream>
 #include <thread>
-#include <ranges>
+// #include <ranges>
 #include <cassert>
 #include <numeric>
 #include "common.h"
@@ -70,9 +70,9 @@ uint32_t CPUWatcher::getRunningTime(){
     return total_end;
 }
 
-void CPUWatcher::dataCollection(){
+void CPUWatcher::dataCollection() {
     // 获取cpu个数 
-    const unsigned int num_cpus = std::thread::hardware_concurrency();
+    // const unsigned int num_cpus = std::thread::hardware_concurrency();
     // 获取sys_cpu
     auto sys_cpu = Watcher::sys_data_->mutable_sys_cpu();
 

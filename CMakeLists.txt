@@ -1,34 +1,41 @@
-# 设置最低CMake版本
 cmake_minimum_required(VERSION 3.10)
 
-# 定义项目名称
 project(ResourceWatcher)
 
-# 查找并要求Protobuf库
-find_package(Protobuf REQUIRED)
+set(CMAKE_CXX_STANDARD 20)
 
-# 设置C++标准
-set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# # 如果存在proto目录，则生成C++源文件
-# if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/proto")
-#     protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS "${CMAKE_CURRENT_SOURCE_DIR}/proto/*.proto")
-#     include_directories("${CMAKE_CURRENT_BINARY_DIR}/proto")
-# endif()
-set(PROTO_SRC "${CMAKE_CURRENT_SOURCE_DIR}/proto/system_data.proto")
-protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${PROTO_SRC})
-# 包含目录
-include_directories(include proto ${Protobuf_INCLUDE_DIRS})
+set(CMAKE_CXX_EXTENSIONS False)
 
-# 收集源文件
-file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp" "${CMAKE_CURRENT_SOURCE_DIR}/*.cc")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fexceptions -frtti")
 
-# 添加可执行文件
-add_executable(${PROJECT_NAME} ${SOURCES} ${PROTO_SRCS} ${PROTO_HDRS})
+find_package(Protobuf REQUIRED)
+include_directories(${Protobuf_INCLUDE_DIRS})
 
-# 设置输出目录
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+set(SOURCE_FILES
+    src/main.cpp
+    src/app.cpp
+    src/watcher.cpp
+    src/cpu_watcher.cpp
+    src/timer_manager.cpp
 
-# 链接库
-target_link_libraries(${PROJECT_NAME} ${Protobuf_LIBRARIES})
+)
+
+
+include_directories(include proto)
+
+
+# Generate protobuf files
+
+protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${CMAKE_SOURCE_DIR}/proto/system_data.proto)
+
+
+# Add executable
+
+add_executable(ResourceWatcher ${SOURCE_FILES} ${PROTO_SRCS})
+
+
+# Link protobuf libraries
+
+target_link_libraries(ResourceWatcher PRIVATE protobuf)

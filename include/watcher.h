@@ -11,8 +11,8 @@ class Watcher{
 protected:
     static std::shared_ptr<system_data> sys_data_; 
 public:
-    Watcher();
-    virtual void dataCollection();
+    Watcher() = default;
+    virtual void dataCollection() = 0;
     virtual ~Watcher() = default;
 };
 };

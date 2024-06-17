@@ -23,13 +23,13 @@ private:
     };
     
     struct CpuStat {
-        std::array<unsigned long, static_cast<size_t>(CpuTimeType::Count)> times;
+        std::array<uint32_t, static_cast<size_t>(CpuTimeType::Count)> times;
         
         const uint32_t& operator[](CpuTimeType type) const {
             return times[static_cast<size_t>(type)];
         }   
     
-        unsigned long& operator[](CpuTimeType type) {
+        uint32_t& operator[](CpuTimeType type) {
             return times[static_cast<size_t>(type)];
         }
 
@@ -46,7 +46,7 @@ private:
 
 
 public:
-    CPUWatcher();
-    virtual void dataCollection();
+    CPUWatcher() = default;
+    void dataCollection() override;
 };
 };
