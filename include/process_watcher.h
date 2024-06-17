@@ -5,7 +5,10 @@
 namespace resource_watcher{
 class ProcessWatcher:public Watcher{
 public:
-    ProcessWatcher();
+    ProcessWatcher() = default;
     virtual void dataCollection();
+private:
+    void readProcDir();
+    std::map<char, int> proc_stat_;
 };
 } // namespace resource_watcher

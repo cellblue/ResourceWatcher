@@ -9,12 +9,11 @@
 #include "common.h"
 namespace resource_watcher{
 
-CPUWatcher::CpuStat CPUWatcher::getCpuStat(){
+CPUWatcher::CpuStat CPUWatcher::readCpuStat(){
     std::ifstream file(cpu_stat.data());
     std::string line;
     std::getline(file, line);
     std::string_view sv{line};
-    std::cout << line << std::endl;
     CpuStat values;
     values[CpuTimeType::Total] = 0;
     int index = 0;
@@ -34,10 +33,10 @@ CPUWatcher::CpuStat CPUWatcher::getCpuStat(){
 }   
 
 float CPUWatcher::getUsage(){
-    unsigned long total_start = start_cpu_stat_[CpuTimeType::Total];
-    unsigned long total_end = end_cpu_stat_[CpuTimeType::Total];
-    unsigned long idle_start = start_cpu_stat_[CpuTimeType::Idle] + start_cpu_stat_[CpuTimeType::IoWait];
-    unsigned long idle_end = end_cpu_stat_[CpuTimeType::Idle] + end_cpu_stat_[CpuTimeType::IoWait];
+    uint64_t total_start = start_cpu_stat_[CpuTimeType::Total];
+    uint64_t total_end = end_cpu_stat_[CpuTimeType::Total];
+    uint64_t idle_start = start_cpu_stat_[CpuTimeType::Idle] + start_cpu_stat_[CpuTimeType::IoWait];
+    uint64_t idle_end = end_cpu_stat_[CpuTimeType::Idle] + end_cpu_stat_[CpuTimeType::IoWait];
     
     float total_diff = total_end-total_start;
     float idle_diff = idle_end-idle_start;
@@ -74,7 +73,7 @@ float CPUWatcher::getSoftirqUsage(){
 }
 
 uint32_t CPUWatcher::getRunningTime(){
-    unsigned long total_end = end_cpu_stat_[CpuTimeType::User] + end_cpu_stat_[CpuTimeType::Nice] + end_cpu_stat_[CpuTimeType::System] + end_cpu_stat_[CpuTimeType::Idle] + end_cpu_stat_[CpuTimeType::IoWait] + end_cpu_stat_[CpuTimeType::Irq] + end_cpu_stat_[CpuTimeType::SoftIrq];
+    uint64_t total_end = end_cpu_stat_[CpuTimeType::User] + end_cpu_stat_[CpuTimeType::Nice] + end_cpu_stat_[CpuTimeType::System] + end_cpu_stat_[CpuTimeType::Idle] + end_cpu_stat_[CpuTimeType::IoWait] + end_cpu_stat_[CpuTimeType::Irq] + end_cpu_stat_[CpuTimeType::SoftIrq];
     return total_end;
 }
 
@@ -83,9 +82,9 @@ void CPUWatcher::dataCollection() {
     // const unsigned int num_cpus = std::thread::hardware_concurrency();
     // 获取sys_cpu
     auto sys_cpu = Watcher::sys_data_->mutable_sys_cpu();
-    start_cpu_stat_ = getCpuStat();
+    start_cpu_stat_ = readCpuStat();
     std::this_thread::sleep_for(std::chrono::milliseconds(10));
-    end_cpu_stat_ = getCpuStat(); 
+    end_cpu_stat_ = readCpuStat(); 
 
     sys_cpu->set_name("sys_cpu");
     sys_cpu->set_usage(getUsage());

@@ -6,6 +6,9 @@
 
 namespace resource_watcher{
 class CPUWatcher:public Watcher{
+public:
+    CPUWatcher() = default;
+    void dataCollection() override;
 private:
     enum class CpuTimeType : uint32_t {
         User,
@@ -36,17 +39,12 @@ private:
     }start_cpu_stat_,end_cpu_stat_;
 
 
-    CpuStat getCpuStat();
+    CpuStat readCpuStat();
     float getUsage();
     float getUserUsage();
     float getSystemUsage();
     float getIrqUsage();
     float getSoftirqUsage();
     uint32_t getRunningTime();
-
-
-public:
-    CPUWatcher() = default;
-    void dataCollection() override;
 };
 } // namespace resource_watcher

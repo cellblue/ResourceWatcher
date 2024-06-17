@@ -16,7 +16,7 @@ message Memory{
     optional float used = 3;
     optional float free = 4;
     optional float shared = 5;
-    optional float buffer_or_cached = 6;
+    optional float buffer_and_cached = 6;
 }
 
 message Disk{
