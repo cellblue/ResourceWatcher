@@ -2,11 +2,12 @@
 
 #include <vector>
 #include <memory>
+
 #include "watcher.h"
 #include "cpu_watcher.h"
 #include "memory_watcher.h"
 // #include "disk_watcher.h"
-// #include "process_watcher.h"
+#include "process_watcher.h"
 
 #include "timer_manager.h"
 

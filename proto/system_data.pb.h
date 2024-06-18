@@ -54,19 +54,19 @@ extern DiskDefaultTypeInternal _Disk_default_instance_;
 class Memory;
 class MemoryDefaultTypeInternal;
 extern MemoryDefaultTypeInternal _Memory_default_instance_;
-class Process;
-class ProcessDefaultTypeInternal;
-extern ProcessDefaultTypeInternal _Process_default_instance_;
-class system_data;
-class system_dataDefaultTypeInternal;
-extern system_dataDefaultTypeInternal _system_data_default_instance_;
+class SysProcess;
+class SysProcessDefaultTypeInternal;
+extern SysProcessDefaultTypeInternal _SysProcess_default_instance_;
+class SystemData;
+class SystemDataDefaultTypeInternal;
+extern SystemDataDefaultTypeInternal _SystemData_default_instance_;
 namespace google {
 namespace protobuf {
 template<> ::CPU* Arena::CreateMaybeMessage<::CPU>(Arena*);
 template<> ::Disk* Arena::CreateMaybeMessage<::Disk>(Arena*);
 template<> ::Memory* Arena::CreateMaybeMessage<::Memory>(Arena*);
-template<> ::Process* Arena::CreateMaybeMessage<::Process>(Arena*);
-template<> ::system_data* Arena::CreateMaybeMessage<::system_data>(Arena*);
+template<> ::SysProcess* Arena::CreateMaybeMessage<::SysProcess>(Arena*);
+template<> ::SystemData* Arena::CreateMaybeMessage<::SystemData>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 
@@ -391,12 +391,12 @@ class Memory : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   float shared() const;
   void set_shared(float value);
 
-  // optional float buffer_or_cached = 6;
-  bool has_buffer_or_cached() const;
-  void clear_buffer_or_cached();
-  static const int kBufferOrCachedFieldNumber = 6;
-  float buffer_or_cached() const;
-  void set_buffer_or_cached(float value);
+  // optional float buffer_and_cached = 6;
+  bool has_buffer_and_cached() const;
+  void clear_buffer_and_cached();
+  static const int kBufferAndCachedFieldNumber = 6;
+  float buffer_and_cached() const;
+  void set_buffer_and_cached(float value);
 
   // @@protoc_insertion_point(class_scope:Memory)
  private:
@@ -410,8 +410,8 @@ class Memory : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   void clear_has_free();
   void set_has_shared();
   void clear_has_shared();
-  void set_has_buffer_or_cached();
-  void clear_has_buffer_or_cached();
+  void set_has_buffer_and_cached();
+  void clear_has_buffer_and_cached();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
@@ -421,7 +421,7 @@ class Memory : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   float used_;
   float free_;
   float shared_;
-  float buffer_or_cached_;
+  float buffer_and_cached_;
   friend struct ::protobuf_system_5fdata_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -586,24 +586,24 @@ class Disk : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
 };
 // -------------------------------------------------------------------
 
-class Process : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Process) */ {
+class SysProcess : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:SysProcess) */ {
  public:
-  Process();
-  virtual ~Process();
+  SysProcess();
+  virtual ~SysProcess();
 
-  Process(const Process& from);
+  SysProcess(const SysProcess& from);
 
-  inline Process& operator=(const Process& from) {
+  inline SysProcess& operator=(const SysProcess& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  Process(Process&& from) noexcept
-    : Process() {
+  SysProcess(SysProcess&& from) noexcept
+    : SysProcess() {
     *this = ::std::move(from);
   }
 
-  inline Process& operator=(Process&& from) noexcept {
+  inline SysProcess& operator=(SysProcess&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -620,34 +620,34 @@ class Process : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Process& default_instance();
+  static const SysProcess& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const Process* internal_default_instance() {
-    return reinterpret_cast<const Process*>(
-               &_Process_default_instance_);
+  static inline const SysProcess* internal_default_instance() {
+    return reinterpret_cast<const SysProcess*>(
+               &_SysProcess_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     3;
 
-  void Swap(Process* other);
-  friend void swap(Process& a, Process& b) {
+  void Swap(SysProcess* other);
+  friend void swap(SysProcess& a, SysProcess& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline Process* New() const final {
-    return CreateMaybeMessage<Process>(NULL);
+  inline SysProcess* New() const final {
+    return CreateMaybeMessage<SysProcess>(NULL);
   }
 
-  Process* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<Process>(arena);
+  SysProcess* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<SysProcess>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const Process& from);
-  void MergeFrom(const Process& from);
+  void CopyFrom(const SysProcess& from);
+  void MergeFrom(const SysProcess& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -664,7 +664,7 @@ class Process : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Process* other);
+  void InternalSwap(SysProcess* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -680,43 +680,60 @@ class Process : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // optional int32 total = 1;
+  // optional string name = 1;
+  bool has_name() const;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_name(::std::string&& value);
+  #endif
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // optional int32 total = 2;
   bool has_total() const;
   void clear_total();
-  static const int kTotalFieldNumber = 1;
+  static const int kTotalFieldNumber = 2;
   ::google::protobuf::int32 total() const;
   void set_total(::google::protobuf::int32 value);
 
-  // optional int32 running = 2;
+  // optional int32 running = 3;
   bool has_running() const;
   void clear_running();
-  static const int kRunningFieldNumber = 2;
+  static const int kRunningFieldNumber = 3;
   ::google::protobuf::int32 running() const;
   void set_running(::google::protobuf::int32 value);
 
-  // optional int32 sleeping = 3;
+  // optional int32 sleeping = 4;
   bool has_sleeping() const;
   void clear_sleeping();
-  static const int kSleepingFieldNumber = 3;
+  static const int kSleepingFieldNumber = 4;
   ::google::protobuf::int32 sleeping() const;
   void set_sleeping(::google::protobuf::int32 value);
 
-  // optional int32 stopped = 4;
+  // optional int32 stopped = 5;
   bool has_stopped() const;
   void clear_stopped();
-  static const int kStoppedFieldNumber = 4;
+  static const int kStoppedFieldNumber = 5;
   ::google::protobuf::int32 stopped() const;
   void set_stopped(::google::protobuf::int32 value);
 
-  // optional int32 zombie = 5;
+  // optional int32 zombie = 6;
   bool has_zombie() const;
   void clear_zombie();
-  static const int kZombieFieldNumber = 5;
+  static const int kZombieFieldNumber = 6;
   ::google::protobuf::int32 zombie() const;
   void set_zombie(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:Process)
+  // @@protoc_insertion_point(class_scope:SysProcess)
  private:
+  void set_has_name();
+  void clear_has_name();
   void set_has_total();
   void clear_has_total();
   void set_has_running();
@@ -731,6 +748,7 @@ class Process : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::int32 total_;
   ::google::protobuf::int32 running_;
   ::google::protobuf::int32 sleeping_;
@@ -740,24 +758,24 @@ class Process : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 };
 // -------------------------------------------------------------------
 
-class system_data : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:system_data) */ {
+class SystemData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:SystemData) */ {
  public:
-  system_data();
-  virtual ~system_data();
+  SystemData();
+  virtual ~SystemData();
 
-  system_data(const system_data& from);
+  SystemData(const SystemData& from);
 
-  inline system_data& operator=(const system_data& from) {
+  inline SystemData& operator=(const SystemData& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  system_data(system_data&& from) noexcept
-    : system_data() {
+  SystemData(SystemData&& from) noexcept
+    : SystemData() {
     *this = ::std::move(from);
   }
 
-  inline system_data& operator=(system_data&& from) noexcept {
+  inline SystemData& operator=(SystemData&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -774,34 +792,34 @@ class system_data : public ::google::protobuf::Message /* @@protoc_insertion_poi
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const system_data& default_instance();
+  static const SystemData& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const system_data* internal_default_instance() {
-    return reinterpret_cast<const system_data*>(
-               &_system_data_default_instance_);
+  static inline const SystemData* internal_default_instance() {
+    return reinterpret_cast<const SystemData*>(
+               &_SystemData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     4;
 
-  void Swap(system_data* other);
-  friend void swap(system_data& a, system_data& b) {
+  void Swap(SystemData* other);
+  friend void swap(SystemData& a, SystemData& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline system_data* New() const final {
-    return CreateMaybeMessage<system_data>(NULL);
+  inline SystemData* New() const final {
+    return CreateMaybeMessage<SystemData>(NULL);
   }
 
-  system_data* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<system_data>(arena);
+  SystemData* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<SystemData>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const system_data& from);
-  void MergeFrom(const system_data& from);
+  void CopyFrom(const SystemData& from);
+  void MergeFrom(const SystemData& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -818,7 +836,7 @@ class system_data : public ::google::protobuf::Message /* @@protoc_insertion_poi
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(system_data* other);
+  void InternalSwap(SystemData* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -858,18 +876,6 @@ class system_data : public ::google::protobuf::Message /* @@protoc_insertion_poi
   const ::google::protobuf::RepeatedPtrField< ::Disk >&
       disks() const;
 
-  // repeated .Process tasks = 6;
-  int tasks_size() const;
-  void clear_tasks();
-  static const int kTasksFieldNumber = 6;
-  ::Process* mutable_tasks(int index);
-  ::google::protobuf::RepeatedPtrField< ::Process >*
-      mutable_tasks();
-  const ::Process& tasks(int index) const;
-  ::Process* add_tasks();
-  const ::google::protobuf::RepeatedPtrField< ::Process >&
-      tasks() const;
-
   // optional .CPU sys_cpu = 1;
   bool has_sys_cpu() const;
   void clear_sys_cpu();
@@ -906,7 +912,19 @@ class system_data : public ::google::protobuf::Message /* @@protoc_insertion_poi
   ::Memory* mutable_swap_mem();
   void set_allocated_swap_mem(::Memory* swap_mem);
 
-  // @@protoc_insertion_point(class_scope:system_data)
+  // optional .SysProcess tasks = 6;
+  bool has_tasks() const;
+  void clear_tasks();
+  static const int kTasksFieldNumber = 6;
+  private:
+  const ::SysProcess& _internal_tasks() const;
+  public:
+  const ::SysProcess& tasks() const;
+  ::SysProcess* release_tasks();
+  ::SysProcess* mutable_tasks();
+  void set_allocated_tasks(::SysProcess* tasks);
+
+  // @@protoc_insertion_point(class_scope:SystemData)
  private:
   void set_has_sys_cpu();
   void clear_has_sys_cpu();
@@ -914,16 +932,18 @@ class system_data : public ::google::protobuf::Message /* @@protoc_insertion_poi
   void clear_has_phy_mem();
   void set_has_swap_mem();
   void clear_has_swap_mem();
+  void set_has_tasks();
+  void clear_has_tasks();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   ::google::protobuf::RepeatedPtrField< ::CPU > cpus_;
   ::google::protobuf::RepeatedPtrField< ::Disk > disks_;
-  ::google::protobuf::RepeatedPtrField< ::Process > tasks_;
   ::CPU* sys_cpu_;
   ::Memory* phy_mem_;
   ::Memory* swap_mem_;
+  ::SysProcess* tasks_;
   friend struct ::protobuf_system_5fdata_2eproto::TableStruct;
 };
 // ===================================================================
@@ -1313,28 +1333,28 @@ inline void Memory::set_shared(float value) {
   // @@protoc_insertion_point(field_set:Memory.shared)
 }
 
-// optional float buffer_or_cached = 6;
-inline bool Memory::has_buffer_or_cached() const {
+// optional float buffer_and_cached = 6;
+inline bool Memory::has_buffer_and_cached() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
-inline void Memory::set_has_buffer_or_cached() {
+inline void Memory::set_has_buffer_and_cached() {
   _has_bits_[0] |= 0x00000020u;
 }
-inline void Memory::clear_has_buffer_or_cached() {
+inline void Memory::clear_has_buffer_and_cached() {
   _has_bits_[0] &= ~0x00000020u;
 }
-inline void Memory::clear_buffer_or_cached() {
-  buffer_or_cached_ = 0;
-  clear_has_buffer_or_cached();
+inline void Memory::clear_buffer_and_cached() {
+  buffer_and_cached_ = 0;
+  clear_has_buffer_and_cached();
 }
-inline float Memory::buffer_or_cached() const {
-  // @@protoc_insertion_point(field_get:Memory.buffer_or_cached)
-  return buffer_or_cached_;
+inline float Memory::buffer_and_cached() const {
+  // @@protoc_insertion_point(field_get:Memory.buffer_and_cached)
+  return buffer_and_cached_;
 }
-inline void Memory::set_buffer_or_cached(float value) {
-  set_has_buffer_or_cached();
-  buffer_or_cached_ = value;
-  // @@protoc_insertion_point(field_set:Memory.buffer_or_cached)
+inline void Memory::set_buffer_and_cached(float value) {
+  set_has_buffer_and_cached();
+  buffer_and_cached_ = value;
+  // @@protoc_insertion_point(field_set:Memory.buffer_and_cached)
 }
 
 // -------------------------------------------------------------------
@@ -1523,172 +1543,238 @@ inline void Disk::set_allocated_mount(::std::string* mount) {
 
 // -------------------------------------------------------------------
 
-// Process
+// SysProcess
 
-// optional int32 total = 1;
-inline bool Process::has_total() const {
+// optional string name = 1;
+inline bool SysProcess::has_name() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Process::set_has_total() {
+inline void SysProcess::set_has_name() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Process::clear_has_total() {
+inline void SysProcess::clear_has_name() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void Process::clear_total() {
+inline void SysProcess::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_name();
+}
+inline const ::std::string& SysProcess::name() const {
+  // @@protoc_insertion_point(field_get:SysProcess.name)
+  return name_.GetNoArena();
+}
+inline void SysProcess::set_name(const ::std::string& value) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:SysProcess.name)
+}
+#if LANG_CXX11
+inline void SysProcess::set_name(::std::string&& value) {
+  set_has_name();
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:SysProcess.name)
+}
+#endif
+inline void SysProcess::set_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:SysProcess.name)
+}
+inline void SysProcess::set_name(const char* value, size_t size) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:SysProcess.name)
+}
+inline ::std::string* SysProcess::mutable_name() {
+  set_has_name();
+  // @@protoc_insertion_point(field_mutable:SysProcess.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SysProcess::release_name() {
+  // @@protoc_insertion_point(field_release:SysProcess.name)
+  if (!has_name()) {
+    return NULL;
+  }
+  clear_has_name();
+  return name_.ReleaseNonDefaultNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SysProcess::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    set_has_name();
+  } else {
+    clear_has_name();
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:SysProcess.name)
+}
+
+// optional int32 total = 2;
+inline bool SysProcess::has_total() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SysProcess::set_has_total() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SysProcess::clear_has_total() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SysProcess::clear_total() {
   total_ = 0;
   clear_has_total();
 }
-inline ::google::protobuf::int32 Process::total() const {
-  // @@protoc_insertion_point(field_get:Process.total)
+inline ::google::protobuf::int32 SysProcess::total() const {
+  // @@protoc_insertion_point(field_get:SysProcess.total)
   return total_;
 }
-inline void Process::set_total(::google::protobuf::int32 value) {
+inline void SysProcess::set_total(::google::protobuf::int32 value) {
   set_has_total();
   total_ = value;
-  // @@protoc_insertion_point(field_set:Process.total)
+  // @@protoc_insertion_point(field_set:SysProcess.total)
 }
 
-// optional int32 running = 2;
-inline bool Process::has_running() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+// optional int32 running = 3;
+inline bool SysProcess::has_running() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void Process::set_has_running() {
-  _has_bits_[0] |= 0x00000002u;
+inline void SysProcess::set_has_running() {
+  _has_bits_[0] |= 0x00000004u;
 }
-inline void Process::clear_has_running() {
-  _has_bits_[0] &= ~0x00000002u;
+inline void SysProcess::clear_has_running() {
+  _has_bits_[0] &= ~0x00000004u;
 }
-inline void Process::clear_running() {
+inline void SysProcess::clear_running() {
   running_ = 0;
   clear_has_running();
 }
-inline ::google::protobuf::int32 Process::running() const {
-  // @@protoc_insertion_point(field_get:Process.running)
+inline ::google::protobuf::int32 SysProcess::running() const {
+  // @@protoc_insertion_point(field_get:SysProcess.running)
   return running_;
 }
-inline void Process::set_running(::google::protobuf::int32 value) {
+inline void SysProcess::set_running(::google::protobuf::int32 value) {
   set_has_running();
   running_ = value;
-  // @@protoc_insertion_point(field_set:Process.running)
+  // @@protoc_insertion_point(field_set:SysProcess.running)
 }
 
-// optional int32 sleeping = 3;
-inline bool Process::has_sleeping() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+// optional int32 sleeping = 4;
+inline bool SysProcess::has_sleeping() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void Process::set_has_sleeping() {
-  _has_bits_[0] |= 0x00000004u;
+inline void SysProcess::set_has_sleeping() {
+  _has_bits_[0] |= 0x00000008u;
 }
-inline void Process::clear_has_sleeping() {
-  _has_bits_[0] &= ~0x00000004u;
+inline void SysProcess::clear_has_sleeping() {
+  _has_bits_[0] &= ~0x00000008u;
 }
-inline void Process::clear_sleeping() {
+inline void SysProcess::clear_sleeping() {
   sleeping_ = 0;
   clear_has_sleeping();
 }
-inline ::google::protobuf::int32 Process::sleeping() const {
-  // @@protoc_insertion_point(field_get:Process.sleeping)
+inline ::google::protobuf::int32 SysProcess::sleeping() const {
+  // @@protoc_insertion_point(field_get:SysProcess.sleeping)
   return sleeping_;
 }
-inline void Process::set_sleeping(::google::protobuf::int32 value) {
+inline void SysProcess::set_sleeping(::google::protobuf::int32 value) {
   set_has_sleeping();
   sleeping_ = value;
-  // @@protoc_insertion_point(field_set:Process.sleeping)
+  // @@protoc_insertion_point(field_set:SysProcess.sleeping)
 }
 
-// optional int32 stopped = 4;
-inline bool Process::has_stopped() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+// optional int32 stopped = 5;
+inline bool SysProcess::has_stopped() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void Process::set_has_stopped() {
-  _has_bits_[0] |= 0x00000008u;
+inline void SysProcess::set_has_stopped() {
+  _has_bits_[0] |= 0x00000010u;
 }
-inline void Process::clear_has_stopped() {
-  _has_bits_[0] &= ~0x00000008u;
+inline void SysProcess::clear_has_stopped() {
+  _has_bits_[0] &= ~0x00000010u;
 }
-inline void Process::clear_stopped() {
+inline void SysProcess::clear_stopped() {
   stopped_ = 0;
   clear_has_stopped();
 }
-inline ::google::protobuf::int32 Process::stopped() const {
-  // @@protoc_insertion_point(field_get:Process.stopped)
+inline ::google::protobuf::int32 SysProcess::stopped() const {
+  // @@protoc_insertion_point(field_get:SysProcess.stopped)
   return stopped_;
 }
-inline void Process::set_stopped(::google::protobuf::int32 value) {
+inline void SysProcess::set_stopped(::google::protobuf::int32 value) {
   set_has_stopped();
   stopped_ = value;
-  // @@protoc_insertion_point(field_set:Process.stopped)
+  // @@protoc_insertion_point(field_set:SysProcess.stopped)
 }
 
-// optional int32 zombie = 5;
-inline bool Process::has_zombie() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+// optional int32 zombie = 6;
+inline bool SysProcess::has_zombie() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
-inline void Process::set_has_zombie() {
-  _has_bits_[0] |= 0x00000010u;
+inline void SysProcess::set_has_zombie() {
+  _has_bits_[0] |= 0x00000020u;
 }
-inline void Process::clear_has_zombie() {
-  _has_bits_[0] &= ~0x00000010u;
+inline void SysProcess::clear_has_zombie() {
+  _has_bits_[0] &= ~0x00000020u;
 }
-inline void Process::clear_zombie() {
+inline void SysProcess::clear_zombie() {
   zombie_ = 0;
   clear_has_zombie();
 }
-inline ::google::protobuf::int32 Process::zombie() const {
-  // @@protoc_insertion_point(field_get:Process.zombie)
+inline ::google::protobuf::int32 SysProcess::zombie() const {
+  // @@protoc_insertion_point(field_get:SysProcess.zombie)
   return zombie_;
 }
-inline void Process::set_zombie(::google::protobuf::int32 value) {
+inline void SysProcess::set_zombie(::google::protobuf::int32 value) {
   set_has_zombie();
   zombie_ = value;
-  // @@protoc_insertion_point(field_set:Process.zombie)
+  // @@protoc_insertion_point(field_set:SysProcess.zombie)
 }
 
 // -------------------------------------------------------------------
 
-// system_data
+// SystemData
 
 // optional .CPU sys_cpu = 1;
-inline bool system_data::has_sys_cpu() const {
+inline bool SystemData::has_sys_cpu() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void system_data::set_has_sys_cpu() {
+inline void SystemData::set_has_sys_cpu() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void system_data::clear_has_sys_cpu() {
+inline void SystemData::clear_has_sys_cpu() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void system_data::clear_sys_cpu() {
+inline void SystemData::clear_sys_cpu() {
   if (sys_cpu_ != NULL) sys_cpu_->Clear();
   clear_has_sys_cpu();
 }
-inline const ::CPU& system_data::_internal_sys_cpu() const {
+inline const ::CPU& SystemData::_internal_sys_cpu() const {
   return *sys_cpu_;
 }
-inline const ::CPU& system_data::sys_cpu() const {
+inline const ::CPU& SystemData::sys_cpu() const {
   const ::CPU* p = sys_cpu_;
-  // @@protoc_insertion_point(field_get:system_data.sys_cpu)
+  // @@protoc_insertion_point(field_get:SystemData.sys_cpu)
   return p != NULL ? *p : *reinterpret_cast<const ::CPU*>(
       &::_CPU_default_instance_);
 }
-inline ::CPU* system_data::release_sys_cpu() {
-  // @@protoc_insertion_point(field_release:system_data.sys_cpu)
+inline ::CPU* SystemData::release_sys_cpu() {
+  // @@protoc_insertion_point(field_release:SystemData.sys_cpu)
   clear_has_sys_cpu();
   ::CPU* temp = sys_cpu_;
   sys_cpu_ = NULL;
   return temp;
 }
-inline ::CPU* system_data::mutable_sys_cpu() {
+inline ::CPU* SystemData::mutable_sys_cpu() {
   set_has_sys_cpu();
   if (sys_cpu_ == NULL) {
     auto* p = CreateMaybeMessage<::CPU>(GetArenaNoVirtual());
     sys_cpu_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:system_data.sys_cpu)
+  // @@protoc_insertion_point(field_mutable:SystemData.sys_cpu)
   return sys_cpu_;
 }
-inline void system_data::set_allocated_sys_cpu(::CPU* sys_cpu) {
+inline void SystemData::set_allocated_sys_cpu(::CPU* sys_cpu) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == NULL) {
     delete sys_cpu_;
@@ -1704,79 +1790,79 @@ inline void system_data::set_allocated_sys_cpu(::CPU* sys_cpu) {
     clear_has_sys_cpu();
   }
   sys_cpu_ = sys_cpu;
-  // @@protoc_insertion_point(field_set_allocated:system_data.sys_cpu)
+  // @@protoc_insertion_point(field_set_allocated:SystemData.sys_cpu)
 }
 
 // repeated .CPU cpus = 2;
-inline int system_data::cpus_size() const {
+inline int SystemData::cpus_size() const {
   return cpus_.size();
 }
-inline void system_data::clear_cpus() {
+inline void SystemData::clear_cpus() {
   cpus_.Clear();
 }
-inline ::CPU* system_data::mutable_cpus(int index) {
-  // @@protoc_insertion_point(field_mutable:system_data.cpus)
+inline ::CPU* SystemData::mutable_cpus(int index) {
+  // @@protoc_insertion_point(field_mutable:SystemData.cpus)
   return cpus_.Mutable(index);
 }
 inline ::google::protobuf::RepeatedPtrField< ::CPU >*
-system_data::mutable_cpus() {
-  // @@protoc_insertion_point(field_mutable_list:system_data.cpus)
+SystemData::mutable_cpus() {
+  // @@protoc_insertion_point(field_mutable_list:SystemData.cpus)
   return &cpus_;
 }
-inline const ::CPU& system_data::cpus(int index) const {
-  // @@protoc_insertion_point(field_get:system_data.cpus)
+inline const ::CPU& SystemData::cpus(int index) const {
+  // @@protoc_insertion_point(field_get:SystemData.cpus)
   return cpus_.Get(index);
 }
-inline ::CPU* system_data::add_cpus() {
-  // @@protoc_insertion_point(field_add:system_data.cpus)
+inline ::CPU* SystemData::add_cpus() {
+  // @@protoc_insertion_point(field_add:SystemData.cpus)
   return cpus_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::CPU >&
-system_data::cpus() const {
-  // @@protoc_insertion_point(field_list:system_data.cpus)
+SystemData::cpus() const {
+  // @@protoc_insertion_point(field_list:SystemData.cpus)
   return cpus_;
 }
 
 // optional .Memory phy_mem = 3;
-inline bool system_data::has_phy_mem() const {
+inline bool SystemData::has_phy_mem() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void system_data::set_has_phy_mem() {
+inline void SystemData::set_has_phy_mem() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void system_data::clear_has_phy_mem() {
+inline void SystemData::clear_has_phy_mem() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void system_data::clear_phy_mem() {
+inline void SystemData::clear_phy_mem() {
   if (phy_mem_ != NULL) phy_mem_->Clear();
   clear_has_phy_mem();
 }
-inline const ::Memory& system_data::_internal_phy_mem() const {
+inline const ::Memory& SystemData::_internal_phy_mem() const {
   return *phy_mem_;
 }
-inline const ::Memory& system_data::phy_mem() const {
+inline const ::Memory& SystemData::phy_mem() const {
   const ::Memory* p = phy_mem_;
-  // @@protoc_insertion_point(field_get:system_data.phy_mem)
+  // @@protoc_insertion_point(field_get:SystemData.phy_mem)
   return p != NULL ? *p : *reinterpret_cast<const ::Memory*>(
       &::_Memory_default_instance_);
 }
-inline ::Memory* system_data::release_phy_mem() {
-  // @@protoc_insertion_point(field_release:system_data.phy_mem)
+inline ::Memory* SystemData::release_phy_mem() {
+  // @@protoc_insertion_point(field_release:SystemData.phy_mem)
   clear_has_phy_mem();
   ::Memory* temp = phy_mem_;
   phy_mem_ = NULL;
   return temp;
 }
-inline ::Memory* system_data::mutable_phy_mem() {
+inline ::Memory* SystemData::mutable_phy_mem() {
   set_has_phy_mem();
   if (phy_mem_ == NULL) {
     auto* p = CreateMaybeMessage<::Memory>(GetArenaNoVirtual());
     phy_mem_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:system_data.phy_mem)
+  // @@protoc_insertion_point(field_mutable:SystemData.phy_mem)
   return phy_mem_;
 }
-inline void system_data::set_allocated_phy_mem(::Memory* phy_mem) {
+inline void SystemData::set_allocated_phy_mem(::Memory* phy_mem) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == NULL) {
     delete phy_mem_;
@@ -1792,49 +1878,49 @@ inline void system_data::set_allocated_phy_mem(::Memory* phy_mem) {
     clear_has_phy_mem();
   }
   phy_mem_ = phy_mem;
-  // @@protoc_insertion_point(field_set_allocated:system_data.phy_mem)
+  // @@protoc_insertion_point(field_set_allocated:SystemData.phy_mem)
 }
 
 // optional .Memory swap_mem = 4;
-inline bool system_data::has_swap_mem() const {
+inline bool SystemData::has_swap_mem() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void system_data::set_has_swap_mem() {
+inline void SystemData::set_has_swap_mem() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void system_data::clear_has_swap_mem() {
+inline void SystemData::clear_has_swap_mem() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void system_data::clear_swap_mem() {
+inline void SystemData::clear_swap_mem() {
   if (swap_mem_ != NULL) swap_mem_->Clear();
   clear_has_swap_mem();
 }
-inline const ::Memory& system_data::_internal_swap_mem() const {
+inline const ::Memory& SystemData::_internal_swap_mem() const {
   return *swap_mem_;
 }
-inline const ::Memory& system_data::swap_mem() const {
+inline const ::Memory& SystemData::swap_mem() const {
   const ::Memory* p = swap_mem_;
-  // @@protoc_insertion_point(field_get:system_data.swap_mem)
+  // @@protoc_insertion_point(field_get:SystemData.swap_mem)
   return p != NULL ? *p : *reinterpret_cast<const ::Memory*>(
       &::_Memory_default_instance_);
 }
-inline ::Memory* system_data::release_swap_mem() {
-  // @@protoc_insertion_point(field_release:system_data.swap_mem)
+inline ::Memory* SystemData::release_swap_mem() {
+  // @@protoc_insertion_point(field_release:SystemData.swap_mem)
   clear_has_swap_mem();
   ::Memory* temp = swap_mem_;
   swap_mem_ = NULL;
   return temp;
 }
-inline ::Memory* system_data::mutable_swap_mem() {
+inline ::Memory* SystemData::mutable_swap_mem() {
   set_has_swap_mem();
   if (swap_mem_ == NULL) {
     auto* p = CreateMaybeMessage<::Memory>(GetArenaNoVirtual());
     swap_mem_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:system_data.swap_mem)
+  // @@protoc_insertion_point(field_mutable:SystemData.swap_mem)
   return swap_mem_;
 }
-inline void system_data::set_allocated_swap_mem(::Memory* swap_mem) {
+inline void SystemData::set_allocated_swap_mem(::Memory* swap_mem) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == NULL) {
     delete swap_mem_;
@@ -1850,67 +1936,95 @@ inline void system_data::set_allocated_swap_mem(::Memory* swap_mem) {
     clear_has_swap_mem();
   }
   swap_mem_ = swap_mem;
-  // @@protoc_insertion_point(field_set_allocated:system_data.swap_mem)
+  // @@protoc_insertion_point(field_set_allocated:SystemData.swap_mem)
 }
 
 // repeated .Disk disks = 5;
-inline int system_data::disks_size() const {
+inline int SystemData::disks_size() const {
   return disks_.size();
 }
-inline void system_data::clear_disks() {
+inline void SystemData::clear_disks() {
   disks_.Clear();
 }
-inline ::Disk* system_data::mutable_disks(int index) {
-  // @@protoc_insertion_point(field_mutable:system_data.disks)
+inline ::Disk* SystemData::mutable_disks(int index) {
+  // @@protoc_insertion_point(field_mutable:SystemData.disks)
   return disks_.Mutable(index);
 }
 inline ::google::protobuf::RepeatedPtrField< ::Disk >*
-system_data::mutable_disks() {
-  // @@protoc_insertion_point(field_mutable_list:system_data.disks)
+SystemData::mutable_disks() {
+  // @@protoc_insertion_point(field_mutable_list:SystemData.disks)
   return &disks_;
 }
-inline const ::Disk& system_data::disks(int index) const {
-  // @@protoc_insertion_point(field_get:system_data.disks)
+inline const ::Disk& SystemData::disks(int index) const {
+  // @@protoc_insertion_point(field_get:SystemData.disks)
   return disks_.Get(index);
 }
-inline ::Disk* system_data::add_disks() {
-  // @@protoc_insertion_point(field_add:system_data.disks)
+inline ::Disk* SystemData::add_disks() {
+  // @@protoc_insertion_point(field_add:SystemData.disks)
   return disks_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::Disk >&
-system_data::disks() const {
-  // @@protoc_insertion_point(field_list:system_data.disks)
+SystemData::disks() const {
+  // @@protoc_insertion_point(field_list:SystemData.disks)
   return disks_;
 }
 
-// repeated .Process tasks = 6;
-inline int system_data::tasks_size() const {
-  return tasks_.size();
+// optional .SysProcess tasks = 6;
+inline bool SystemData::has_tasks() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void system_data::clear_tasks() {
-  tasks_.Clear();
+inline void SystemData::set_has_tasks() {
+  _has_bits_[0] |= 0x00000008u;
 }
-inline ::Process* system_data::mutable_tasks(int index) {
-  // @@protoc_insertion_point(field_mutable:system_data.tasks)
-  return tasks_.Mutable(index);
+inline void SystemData::clear_has_tasks() {
+  _has_bits_[0] &= ~0x00000008u;
 }
-inline ::google::protobuf::RepeatedPtrField< ::Process >*
-system_data::mutable_tasks() {
-  // @@protoc_insertion_point(field_mutable_list:system_data.tasks)
-  return &tasks_;
+inline void SystemData::clear_tasks() {
+  if (tasks_ != NULL) tasks_->Clear();
+  clear_has_tasks();
 }
-inline const ::Process& system_data::tasks(int index) const {
-  // @@protoc_insertion_point(field_get:system_data.tasks)
-  return tasks_.Get(index);
+inline const ::SysProcess& SystemData::_internal_tasks() const {
+  return *tasks_;
 }
-inline ::Process* system_data::add_tasks() {
-  // @@protoc_insertion_point(field_add:system_data.tasks)
-  return tasks_.Add();
+inline const ::SysProcess& SystemData::tasks() const {
+  const ::SysProcess* p = tasks_;
+  // @@protoc_insertion_point(field_get:SystemData.tasks)
+  return p != NULL ? *p : *reinterpret_cast<const ::SysProcess*>(
+      &::_SysProcess_default_instance_);
 }
-inline const ::google::protobuf::RepeatedPtrField< ::Process >&
-system_data::tasks() const {
-  // @@protoc_insertion_point(field_list:system_data.tasks)
+inline ::SysProcess* SystemData::release_tasks() {
+  // @@protoc_insertion_point(field_release:SystemData.tasks)
+  clear_has_tasks();
+  ::SysProcess* temp = tasks_;
+  tasks_ = NULL;
+  return temp;
+}
+inline ::SysProcess* SystemData::mutable_tasks() {
+  set_has_tasks();
+  if (tasks_ == NULL) {
+    auto* p = CreateMaybeMessage<::SysProcess>(GetArenaNoVirtual());
+    tasks_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:SystemData.tasks)
   return tasks_;
+}
+inline void SystemData::set_allocated_tasks(::SysProcess* tasks) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete tasks_;
+  }
+  if (tasks) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      tasks = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, tasks, submessage_arena);
+    }
+    set_has_tasks();
+  } else {
+    clear_has_tasks();
+  }
+  tasks_ = tasks;
+  // @@protoc_insertion_point(field_set_allocated:SystemData.tasks)
 }
 
 #ifdef __GNUC__

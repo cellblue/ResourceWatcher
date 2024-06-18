@@ -18,6 +18,8 @@ set(SOURCE_FILES
     src/app.cpp
     src/watcher.cpp
     src/cpu_watcher.cpp
+    src/memory_watcher.cpp
+    src/process_watcher.cpp
     src/timer_manager.cpp
 
 )

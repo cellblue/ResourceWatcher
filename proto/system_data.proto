@@ -26,19 +26,20 @@ message Disk{
     optional string mount = 4;
 }
 
-message Process{
-    optional int32 total = 1;
-    optional int32 running = 2;
-    optional int32 sleeping = 3;
-    optional int32 stopped = 4;
-    optional int32 zombie = 5;
+message SysProcess{
+    optional string name = 1;
+    optional int32 total = 2;
+    optional int32 running = 3;
+    optional int32 sleeping = 4;
+    optional int32 stopped = 5;
+    optional int32 zombie = 6;
 }
 
-message system_data{
+message SystemData{
     optional CPU sys_cpu = 1;
     repeated CPU cpus = 2;
     optional Memory phy_mem = 3;
     optional Memory swap_mem = 4;
     repeated Disk disks = 5;
-    repeated Process tasks = 6;
+    optional SysProcess tasks = 6;
 }

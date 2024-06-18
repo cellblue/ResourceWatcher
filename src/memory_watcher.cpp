@@ -55,8 +55,9 @@ void MemoryWatcher::readMemInfo(){
 }
 
 void MemoryWatcher::dataCollection(){
-    auto phy_mem = Watcher::sys_data_->mutable_phy_mem();
     readMemInfo();
+    
+    auto phy_mem = Watcher::sys_data_->mutable_phy_mem();
     phy_mem->set_name("phy_mem");
     phy_mem->set_total(getPhyTotal());
     phy_mem->set_used(getPhyUsed());

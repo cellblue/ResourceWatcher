@@ -23,7 +23,7 @@ namespace protobuf_system_5fdata_2eproto {
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_system_5fdata_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_CPU;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_system_5fdata_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Disk;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_system_5fdata_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Memory;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_system_5fdata_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Process;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_system_5fdata_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_SysProcess;
 }  // namespace protobuf_system_5fdata_2eproto
 class CPUDefaultTypeInternal {
  public:
@@ -40,16 +40,16 @@ class DiskDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<Disk>
       _instance;
 } _Disk_default_instance_;
-class ProcessDefaultTypeInternal {
+class SysProcessDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Process>
+  ::google::protobuf::internal::ExplicitlyConstructed<SysProcess>
       _instance;
-} _Process_default_instance_;
-class system_dataDefaultTypeInternal {
+} _SysProcess_default_instance_;
+class SystemDataDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<system_data>
+  ::google::protobuf::internal::ExplicitlyConstructed<SystemData>
       _instance;
-} _system_data_default_instance_;
+} _SystemData_default_instance_;
 namespace protobuf_system_5fdata_2eproto {
 static void InitDefaultsCPU() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -93,44 +93,44 @@ static void InitDefaultsDisk() {
 ::google::protobuf::internal::SCCInfo<0> scc_info_Disk =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsDisk}, {}};
 
-static void InitDefaultsProcess() {
+static void InitDefaultsSysProcess() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::_Process_default_instance_;
-    new (ptr) ::Process();
+    void* ptr = &::_SysProcess_default_instance_;
+    new (ptr) ::SysProcess();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::Process::InitAsDefaultInstance();
+  ::SysProcess::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Process =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsProcess}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_SysProcess =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsSysProcess}, {}};
 
-static void InitDefaultssystem_data() {
+static void InitDefaultsSystemData() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::_system_data_default_instance_;
-    new (ptr) ::system_data();
+    void* ptr = &::_SystemData_default_instance_;
+    new (ptr) ::SystemData();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::system_data::InitAsDefaultInstance();
+  ::SystemData::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<4> scc_info_system_data =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 4, InitDefaultssystem_data}, {
+::google::protobuf::internal::SCCInfo<4> scc_info_SystemData =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 4, InitDefaultsSystemData}, {
       &protobuf_system_5fdata_2eproto::scc_info_CPU.base,
       &protobuf_system_5fdata_2eproto::scc_info_Memory.base,
       &protobuf_system_5fdata_2eproto::scc_info_Disk.base,
-      &protobuf_system_5fdata_2eproto::scc_info_Process.base,}};
+      &protobuf_system_5fdata_2eproto::scc_info_SysProcess.base,}};
 
 void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_CPU.base);
   ::google::protobuf::internal::InitSCC(&scc_info_Memory.base);
   ::google::protobuf::internal::InitSCC(&scc_info_Disk.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Process.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_system_data.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_SysProcess.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_SystemData.base);
 }
 
 ::google::protobuf::Metadata file_level_metadata[5];
@@ -165,7 +165,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Memory, used_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Memory, free_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Memory, shared_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Memory, buffer_or_cached_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Memory, buffer_and_cached_),
   0,
   1,
   2,
@@ -185,53 +185,55 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   2,
   3,
   1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Process, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Process, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SysProcess, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SysProcess, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Process, total_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Process, running_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Process, sleeping_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Process, stopped_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Process, zombie_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SysProcess, name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SysProcess, total_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SysProcess, running_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SysProcess, sleeping_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SysProcess, stopped_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SysProcess, zombie_),
   0,
   1,
   2,
   3,
   4,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::system_data, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::system_data, _internal_metadata_),
+  5,
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SystemData, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SystemData, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::system_data, sys_cpu_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::system_data, cpus_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::system_data, phy_mem_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::system_data, swap_mem_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::system_data, disks_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::system_data, tasks_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SystemData, sys_cpu_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SystemData, cpus_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SystemData, phy_mem_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SystemData, swap_mem_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SystemData, disks_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SystemData, tasks_),
   0,
   ~0u,
   1,
   2,
   ~0u,
-  ~0u,
+  3,
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 12, sizeof(::CPU)},
   { 19, 30, sizeof(::Memory)},
   { 36, 45, sizeof(::Disk)},
-  { 49, 59, sizeof(::Process)},
-  { 64, 75, sizeof(::system_data)},
+  { 49, 60, sizeof(::SysProcess)},
+  { 66, 77, sizeof(::SystemData)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::_CPU_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::_Memory_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::_Disk_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_Process_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_system_data_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::_SysProcess_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::_SystemData_default_instance_),
 };
 
 void protobuf_AssignDescriptors() {
@@ -259,20 +261,21 @@ void AddDescriptorsImpl() {
       "\t\022\r\n\005usage\030\002 \001(\002\022\022\n\nuser_usage\030\003 \001(\002\022\024\n\014"
       "system_usage\030\004 \001(\002\022\021\n\tirq_usage\030\005 \001(\002\022\025\n"
       "\rsoftirq_usage\030\006 \001(\002\022\024\n\014running_time\030\007 \001"
-      "(\005\"k\n\006Memory\022\014\n\004name\030\001 \001(\t\022\r\n\005total\030\002 \001("
+      "(\005\"l\n\006Memory\022\014\n\004name\030\001 \001(\t\022\r\n\005total\030\002 \001("
       "\002\022\014\n\004used\030\003 \001(\002\022\014\n\004free\030\004 \001(\002\022\016\n\006shared\030"
-      "\005 \001(\002\022\030\n\020buffer_or_cached\030\006 \001(\002\"H\n\004Disk\022"
-      "\023\n\013file_system\030\001 \001(\t\022\r\n\005total\030\002 \001(\002\022\r\n\005u"
-      "sage\030\003 \001(\002\022\r\n\005mount\030\004 \001(\t\"\\\n\007Process\022\r\n\005"
-      "total\030\001 \001(\005\022\017\n\007running\030\002 \001(\005\022\020\n\010sleeping"
-      "\030\003 \001(\005\022\017\n\007stopped\030\004 \001(\005\022\016\n\006zombie\030\005 \001(\005\""
-      "\234\001\n\013system_data\022\025\n\007sys_cpu\030\001 \001(\0132\004.CPU\022\022"
-      "\n\004cpus\030\002 \003(\0132\004.CPU\022\030\n\007phy_mem\030\003 \001(\0132\007.Me"
-      "mory\022\031\n\010swap_mem\030\004 \001(\0132\007.Memory\022\024\n\005disks"
-      "\030\005 \003(\0132\005.Disk\022\027\n\005tasks\030\006 \003(\0132\010.Process"
+      "\005 \001(\002\022\031\n\021buffer_and_cached\030\006 \001(\002\"H\n\004Disk"
+      "\022\023\n\013file_system\030\001 \001(\t\022\r\n\005total\030\002 \001(\002\022\r\n\005"
+      "usage\030\003 \001(\002\022\r\n\005mount\030\004 \001(\t\"m\n\nSysProcess"
+      "\022\014\n\004name\030\001 \001(\t\022\r\n\005total\030\002 \001(\005\022\017\n\007running"
+      "\030\003 \001(\005\022\020\n\010sleeping\030\004 \001(\005\022\017\n\007stopped\030\005 \001("
+      "\005\022\016\n\006zombie\030\006 \001(\005\"\236\001\n\nSystemData\022\025\n\007sys_"
+      "cpu\030\001 \001(\0132\004.CPU\022\022\n\004cpus\030\002 \003(\0132\004.CPU\022\030\n\007p"
+      "hy_mem\030\003 \001(\0132\007.Memory\022\031\n\010swap_mem\030\004 \001(\0132"
+      "\007.Memory\022\024\n\005disks\030\005 \003(\0132\005.Disk\022\032\n\005tasks\030"
+      "\006 \001(\0132\013.SysProcess"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 598);
+      descriptor, 618);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "system_data.proto", &protobuf_RegisterTypes);
 }
@@ -772,7 +775,7 @@ const int Memory::kTotalFieldNumber;
 const int Memory::kUsedFieldNumber;
 const int Memory::kFreeFieldNumber;
 const int Memory::kSharedFieldNumber;
-const int Memory::kBufferOrCachedFieldNumber;
+const int Memory::kBufferAndCachedFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Memory::Memory()
@@ -792,16 +795,16 @@ Memory::Memory(const Memory& from)
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   ::memcpy(&total_, &from.total_,
-    static_cast<size_t>(reinterpret_cast<char*>(&buffer_or_cached_) -
-    reinterpret_cast<char*>(&total_)) + sizeof(buffer_or_cached_));
+    static_cast<size_t>(reinterpret_cast<char*>(&buffer_and_cached_) -
+    reinterpret_cast<char*>(&total_)) + sizeof(buffer_and_cached_));
   // @@protoc_insertion_point(copy_constructor:Memory)
 }
 
 void Memory::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&total_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&buffer_or_cached_) -
-      reinterpret_cast<char*>(&total_)) + sizeof(buffer_or_cached_));
+      reinterpret_cast<char*>(&buffer_and_cached_) -
+      reinterpret_cast<char*>(&total_)) + sizeof(buffer_and_cached_));
 }
 
 Memory::~Memory() {
@@ -839,8 +842,8 @@ void Memory::Clear() {
   }
   if (cached_has_bits & 62u) {
     ::memset(&total_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&buffer_or_cached_) -
-        reinterpret_cast<char*>(&total_)) + sizeof(buffer_or_cached_));
+        reinterpret_cast<char*>(&buffer_and_cached_) -
+        reinterpret_cast<char*>(&total_)) + sizeof(buffer_and_cached_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
@@ -928,14 +931,14 @@ bool Memory::MergePartialFromCodedStream(
         break;
       }
 
-      // optional float buffer_or_cached = 6;
+      // optional float buffer_and_cached = 6;
       case 6: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(53u /* 53 & 0xFF */)) {
-          set_has_buffer_or_cached();
+          set_has_buffer_and_cached();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &buffer_or_cached_)));
+                 input, &buffer_and_cached_)));
         } else {
           goto handle_unusual;
         }
@@ -999,9 +1002,9 @@ void Memory::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->shared(), output);
   }
 
-  // optional float buffer_or_cached = 6;
+  // optional float buffer_and_cached = 6;
   if (cached_has_bits & 0x00000020u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(6, this->buffer_or_cached(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(6, this->buffer_and_cached(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1050,9 +1053,9 @@ void Memory::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->shared(), target);
   }
 
-  // optional float buffer_or_cached = 6;
+  // optional float buffer_and_cached = 6;
   if (cached_has_bits & 0x00000020u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(6, this->buffer_or_cached(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(6, this->buffer_and_cached(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1100,8 +1103,8 @@ size_t Memory::ByteSizeLong() const {
       total_size += 1 + 4;
     }
 
-    // optional float buffer_or_cached = 6;
-    if (has_buffer_or_cached()) {
+    // optional float buffer_and_cached = 6;
+    if (has_buffer_and_cached()) {
       total_size += 1 + 4;
     }
 
@@ -1152,7 +1155,7 @@ void Memory::MergeFrom(const Memory& from) {
       shared_ = from.shared_;
     }
     if (cached_has_bits & 0x00000020u) {
-      buffer_or_cached_ = from.buffer_or_cached_;
+      buffer_and_cached_ = from.buffer_and_cached_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -1188,7 +1191,7 @@ void Memory::InternalSwap(Memory* other) {
   swap(used_, other->used_);
   swap(free_, other->free_);
   swap(shared_, other->shared_);
-  swap(buffer_or_cached_, other->buffer_or_cached_);
+  swap(buffer_and_cached_, other->buffer_and_cached_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
@@ -1598,70 +1601,80 @@ void Disk::InternalSwap(Disk* other) {
 
 // ===================================================================
 
-void Process::InitAsDefaultInstance() {
+void SysProcess::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Process::kTotalFieldNumber;
-const int Process::kRunningFieldNumber;
-const int Process::kSleepingFieldNumber;
-const int Process::kStoppedFieldNumber;
-const int Process::kZombieFieldNumber;
+const int SysProcess::kNameFieldNumber;
+const int SysProcess::kTotalFieldNumber;
+const int SysProcess::kRunningFieldNumber;
+const int SysProcess::kSleepingFieldNumber;
+const int SysProcess::kStoppedFieldNumber;
+const int SysProcess::kZombieFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-Process::Process()
+SysProcess::SysProcess()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   ::google::protobuf::internal::InitSCC(
-      &protobuf_system_5fdata_2eproto::scc_info_Process.base);
+      &protobuf_system_5fdata_2eproto::scc_info_SysProcess.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Process)
+  // @@protoc_insertion_point(constructor:SysProcess)
 }
-Process::Process(const Process& from)
+SysProcess::SysProcess(const SysProcess& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.has_name()) {
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
   ::memcpy(&total_, &from.total_,
     static_cast<size_t>(reinterpret_cast<char*>(&zombie_) -
     reinterpret_cast<char*>(&total_)) + sizeof(zombie_));
-  // @@protoc_insertion_point(copy_constructor:Process)
+  // @@protoc_insertion_point(copy_constructor:SysProcess)
 }
 
-void Process::SharedCtor() {
+void SysProcess::SharedCtor() {
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&total_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&zombie_) -
       reinterpret_cast<char*>(&total_)) + sizeof(zombie_));
 }
 
-Process::~Process() {
-  // @@protoc_insertion_point(destructor:Process)
+SysProcess::~SysProcess() {
+  // @@protoc_insertion_point(destructor:SysProcess)
   SharedDtor();
 }
 
-void Process::SharedDtor() {
+void SysProcess::SharedDtor() {
+  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
-void Process::SetCachedSize(int size) const {
+void SysProcess::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* Process::descriptor() {
+const ::google::protobuf::Descriptor* SysProcess::descriptor() {
   ::protobuf_system_5fdata_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_system_5fdata_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const Process& Process::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_system_5fdata_2eproto::scc_info_Process.base);
+const SysProcess& SysProcess::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_system_5fdata_2eproto::scc_info_SysProcess.base);
   return *internal_default_instance();
 }
 
 
-void Process::Clear() {
-// @@protoc_insertion_point(message_clear_start:Process)
+void SysProcess::Clear() {
+// @@protoc_insertion_point(message_clear_start:SysProcess)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 31u) {
+  if (cached_has_bits & 0x00000001u) {
+    name_.ClearNonDefaultToEmptyNoArena();
+  }
+  if (cached_has_bits & 62u) {
     ::memset(&total_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&zombie_) -
         reinterpret_cast<char*>(&total_)) + sizeof(zombie_));
@@ -1670,20 +1683,36 @@ void Process::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool Process::MergePartialFromCodedStream(
+bool SysProcess::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Process)
+  // @@protoc_insertion_point(parse_start:SysProcess)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional int32 total = 1;
+      // optional string name = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->name().data(), static_cast<int>(this->name().length()),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "SysProcess.name");
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional int32 total = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
           set_has_total();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -1694,10 +1723,10 @@ bool Process::MergePartialFromCodedStream(
         break;
       }
 
-      // optional int32 running = 2;
-      case 2: {
+      // optional int32 running = 3;
+      case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
           set_has_running();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -1708,10 +1737,10 @@ bool Process::MergePartialFromCodedStream(
         break;
       }
 
-      // optional int32 sleeping = 3;
-      case 3: {
+      // optional int32 sleeping = 4;
+      case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
           set_has_sleeping();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -1722,10 +1751,10 @@ bool Process::MergePartialFromCodedStream(
         break;
       }
 
-      // optional int32 stopped = 4;
-      case 4: {
+      // optional int32 stopped = 5;
+      case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
           set_has_stopped();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -1736,10 +1765,10 @@ bool Process::MergePartialFromCodedStream(
         break;
       }
 
-      // optional int32 zombie = 5;
-      case 5: {
+      // optional int32 zombie = 6;
+      case 6: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(48u /* 48 & 0xFF */)) {
           set_has_zombie();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -1762,96 +1791,117 @@ bool Process::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Process)
+  // @@protoc_insertion_point(parse_success:SysProcess)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Process)
+  // @@protoc_insertion_point(parse_failure:SysProcess)
   return false;
 #undef DO_
 }
 
-void Process::SerializeWithCachedSizes(
+void SysProcess::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Process)
+  // @@protoc_insertion_point(serialize_start:SysProcess)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  // optional int32 total = 1;
+  // optional string name = 1;
   if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->total(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->name().data(), static_cast<int>(this->name().length()),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "SysProcess.name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->name(), output);
   }
 
-  // optional int32 running = 2;
+  // optional int32 total = 2;
   if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->running(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->total(), output);
   }
 
-  // optional int32 sleeping = 3;
+  // optional int32 running = 3;
   if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->sleeping(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->running(), output);
   }
 
-  // optional int32 stopped = 4;
+  // optional int32 sleeping = 4;
   if (cached_has_bits & 0x00000008u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->stopped(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->sleeping(), output);
   }
 
-  // optional int32 zombie = 5;
+  // optional int32 stopped = 5;
   if (cached_has_bits & 0x00000010u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->zombie(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->stopped(), output);
+  }
+
+  // optional int32 zombie = 6;
+  if (cached_has_bits & 0x00000020u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->zombie(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:Process)
+  // @@protoc_insertion_point(serialize_end:SysProcess)
 }
 
-::google::protobuf::uint8* Process::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* SysProcess::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Process)
+  // @@protoc_insertion_point(serialize_to_array_start:SysProcess)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  // optional int32 total = 1;
+  // optional string name = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->total(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->name().data(), static_cast<int>(this->name().length()),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "SysProcess.name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
   }
 
-  // optional int32 running = 2;
+  // optional int32 total = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->running(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->total(), target);
   }
 
-  // optional int32 sleeping = 3;
+  // optional int32 running = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->sleeping(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->running(), target);
   }
 
-  // optional int32 stopped = 4;
+  // optional int32 sleeping = 4;
   if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->stopped(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->sleeping(), target);
   }
 
-  // optional int32 zombie = 5;
+  // optional int32 stopped = 5;
   if (cached_has_bits & 0x00000010u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->zombie(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->stopped(), target);
+  }
+
+  // optional int32 zombie = 6;
+  if (cached_has_bits & 0x00000020u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->zombie(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Process)
+  // @@protoc_insertion_point(serialize_to_array_end:SysProcess)
   return target;
 }
 
-size_t Process::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Process)
+size_t SysProcess::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:SysProcess)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1859,36 +1909,43 @@ size_t Process::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         _internal_metadata_.unknown_fields());
   }
-  if (_has_bits_[0 / 32] & 31u) {
-    // optional int32 total = 1;
+  if (_has_bits_[0 / 32] & 63u) {
+    // optional string name = 1;
+    if (has_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
+    }
+
+    // optional int32 total = 2;
     if (has_total()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->total());
     }
 
-    // optional int32 running = 2;
+    // optional int32 running = 3;
     if (has_running()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->running());
     }
 
-    // optional int32 sleeping = 3;
+    // optional int32 sleeping = 4;
     if (has_sleeping()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->sleeping());
     }
 
-    // optional int32 stopped = 4;
+    // optional int32 stopped = 5;
     if (has_stopped()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->stopped());
     }
 
-    // optional int32 zombie = 5;
+    // optional int32 zombie = 6;
     if (has_zombie()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -1901,73 +1958,79 @@ size_t Process::ByteSizeLong() const {
   return total_size;
 }
 
-void Process::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Process)
+void SysProcess::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:SysProcess)
   GOOGLE_DCHECK_NE(&from, this);
-  const Process* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Process>(
+  const SysProcess* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const SysProcess>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Process)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:SysProcess)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Process)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:SysProcess)
     MergeFrom(*source);
   }
 }
 
-void Process::MergeFrom(const Process& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Process)
+void SysProcess::MergeFrom(const SysProcess& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:SysProcess)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 31u) {
+  if (cached_has_bits & 63u) {
     if (cached_has_bits & 0x00000001u) {
-      total_ = from.total_;
+      set_has_name();
+      name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
     }
     if (cached_has_bits & 0x00000002u) {
-      running_ = from.running_;
+      total_ = from.total_;
     }
     if (cached_has_bits & 0x00000004u) {
-      sleeping_ = from.sleeping_;
+      running_ = from.running_;
     }
     if (cached_has_bits & 0x00000008u) {
-      stopped_ = from.stopped_;
+      sleeping_ = from.sleeping_;
     }
     if (cached_has_bits & 0x00000010u) {
+      stopped_ = from.stopped_;
+    }
+    if (cached_has_bits & 0x00000020u) {
       zombie_ = from.zombie_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
 }
 
-void Process::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Process)
+void SysProcess::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:SysProcess)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Process::CopyFrom(const Process& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Process)
+void SysProcess::CopyFrom(const SysProcess& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:SysProcess)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Process::IsInitialized() const {
+bool SysProcess::IsInitialized() const {
   return true;
 }
 
-void Process::Swap(Process* other) {
+void SysProcess::Swap(SysProcess* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void Process::InternalSwap(Process* other) {
+void SysProcess::InternalSwap(SysProcess* other) {
   using std::swap;
+  name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   swap(total_, other->total_);
   swap(running_, other->running_);
   swap(sleeping_, other->sleeping_);
@@ -1977,7 +2040,7 @@ void Process::InternalSwap(Process* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata Process::GetMetadata() const {
+::google::protobuf::Metadata SysProcess::GetMetadata() const {
   protobuf_system_5fdata_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_system_5fdata_2eproto::file_level_metadata[kIndexInFileMessages];
 }
@@ -1985,37 +2048,38 @@ void Process::InternalSwap(Process* other) {
 
 // ===================================================================
 
-void system_data::InitAsDefaultInstance() {
-  ::_system_data_default_instance_._instance.get_mutable()->sys_cpu_ = const_cast< ::CPU*>(
+void SystemData::InitAsDefaultInstance() {
+  ::_SystemData_default_instance_._instance.get_mutable()->sys_cpu_ = const_cast< ::CPU*>(
       ::CPU::internal_default_instance());
-  ::_system_data_default_instance_._instance.get_mutable()->phy_mem_ = const_cast< ::Memory*>(
+  ::_SystemData_default_instance_._instance.get_mutable()->phy_mem_ = const_cast< ::Memory*>(
       ::Memory::internal_default_instance());
-  ::_system_data_default_instance_._instance.get_mutable()->swap_mem_ = const_cast< ::Memory*>(
+  ::_SystemData_default_instance_._instance.get_mutable()->swap_mem_ = const_cast< ::Memory*>(
       ::Memory::internal_default_instance());
+  ::_SystemData_default_instance_._instance.get_mutable()->tasks_ = const_cast< ::SysProcess*>(
+      ::SysProcess::internal_default_instance());
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int system_data::kSysCpuFieldNumber;
-const int system_data::kCpusFieldNumber;
-const int system_data::kPhyMemFieldNumber;
-const int system_data::kSwapMemFieldNumber;
-const int system_data::kDisksFieldNumber;
-const int system_data::kTasksFieldNumber;
+const int SystemData::kSysCpuFieldNumber;
+const int SystemData::kCpusFieldNumber;
+const int SystemData::kPhyMemFieldNumber;
+const int SystemData::kSwapMemFieldNumber;
+const int SystemData::kDisksFieldNumber;
+const int SystemData::kTasksFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-system_data::system_data()
+SystemData::SystemData()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   ::google::protobuf::internal::InitSCC(
-      &protobuf_system_5fdata_2eproto::scc_info_system_data.base);
+      &protobuf_system_5fdata_2eproto::scc_info_SystemData.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:system_data)
+  // @@protoc_insertion_point(constructor:SystemData)
 }
-system_data::system_data(const system_data& from)
+SystemData::SystemData(const SystemData& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _has_bits_(from._has_bits_),
       cpus_(from.cpus_),
-      disks_(from.disks_),
-      tasks_(from.tasks_) {
+      disks_(from.disks_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.has_sys_cpu()) {
     sys_cpu_ = new ::CPU(*from.sys_cpu_);
@@ -2032,51 +2096,56 @@ system_data::system_data(const system_data& from)
   } else {
     swap_mem_ = NULL;
   }
-  // @@protoc_insertion_point(copy_constructor:system_data)
+  if (from.has_tasks()) {
+    tasks_ = new ::SysProcess(*from.tasks_);
+  } else {
+    tasks_ = NULL;
+  }
+  // @@protoc_insertion_point(copy_constructor:SystemData)
 }
 
-void system_data::SharedCtor() {
+void SystemData::SharedCtor() {
   ::memset(&sys_cpu_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&swap_mem_) -
-      reinterpret_cast<char*>(&sys_cpu_)) + sizeof(swap_mem_));
+      reinterpret_cast<char*>(&tasks_) -
+      reinterpret_cast<char*>(&sys_cpu_)) + sizeof(tasks_));
 }
 
-system_data::~system_data() {
-  // @@protoc_insertion_point(destructor:system_data)
+SystemData::~SystemData() {
+  // @@protoc_insertion_point(destructor:SystemData)
   SharedDtor();
 }
 
-void system_data::SharedDtor() {
+void SystemData::SharedDtor() {
   if (this != internal_default_instance()) delete sys_cpu_;
   if (this != internal_default_instance()) delete phy_mem_;
   if (this != internal_default_instance()) delete swap_mem_;
+  if (this != internal_default_instance()) delete tasks_;
 }
 
-void system_data::SetCachedSize(int size) const {
+void SystemData::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* system_data::descriptor() {
+const ::google::protobuf::Descriptor* SystemData::descriptor() {
   ::protobuf_system_5fdata_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_system_5fdata_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const system_data& system_data::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_system_5fdata_2eproto::scc_info_system_data.base);
+const SystemData& SystemData::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_system_5fdata_2eproto::scc_info_SystemData.base);
   return *internal_default_instance();
 }
 
 
-void system_data::Clear() {
-// @@protoc_insertion_point(message_clear_start:system_data)
+void SystemData::Clear() {
+// @@protoc_insertion_point(message_clear_start:SystemData)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cpus_.Clear();
   disks_.Clear();
-  tasks_.Clear();
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 7u) {
+  if (cached_has_bits & 15u) {
     if (cached_has_bits & 0x00000001u) {
       GOOGLE_DCHECK(sys_cpu_ != NULL);
       sys_cpu_->Clear();
@@ -2089,16 +2158,20 @@ void system_data::Clear() {
       GOOGLE_DCHECK(swap_mem_ != NULL);
       swap_mem_->Clear();
     }
+    if (cached_has_bits & 0x00000008u) {
+      GOOGLE_DCHECK(tasks_ != NULL);
+      tasks_->Clear();
+    }
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
 
-bool system_data::MergePartialFromCodedStream(
+bool SystemData::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:system_data)
+  // @@protoc_insertion_point(parse_start:SystemData)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -2164,12 +2237,12 @@ bool system_data::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .Process tasks = 6;
+      // optional .SysProcess tasks = 6;
       case 6: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_tasks()));
+               input, mutable_tasks()));
         } else {
           goto handle_unusual;
         }
@@ -2188,17 +2261,17 @@ bool system_data::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:system_data)
+  // @@protoc_insertion_point(parse_success:SystemData)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:system_data)
+  // @@protoc_insertion_point(parse_failure:SystemData)
   return false;
 #undef DO_
 }
 
-void system_data::SerializeWithCachedSizes(
+void SystemData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:system_data)
+  // @@protoc_insertion_point(serialize_start:SystemData)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2239,26 +2312,23 @@ void system_data::SerializeWithCachedSizes(
       output);
   }
 
-  // repeated .Process tasks = 6;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->tasks_size()); i < n; i++) {
+  // optional .SysProcess tasks = 6;
+  if (cached_has_bits & 0x00000008u) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6,
-      this->tasks(static_cast<int>(i)),
-      output);
+      6, this->_internal_tasks(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:system_data)
+  // @@protoc_insertion_point(serialize_end:SystemData)
 }
 
-::google::protobuf::uint8* system_data::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* SystemData::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:system_data)
+  // @@protoc_insertion_point(serialize_to_array_start:SystemData)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2300,24 +2370,23 @@ void system_data::SerializeWithCachedSizes(
         5, this->disks(static_cast<int>(i)), deterministic, target);
   }
 
-  // repeated .Process tasks = 6;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->tasks_size()); i < n; i++) {
+  // optional .SysProcess tasks = 6;
+  if (cached_has_bits & 0x00000008u) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        6, this->tasks(static_cast<int>(i)), deterministic, target);
+        6, this->_internal_tasks(), deterministic, target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:system_data)
+  // @@protoc_insertion_point(serialize_to_array_end:SystemData)
   return target;
 }
 
-size_t system_data::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:system_data)
+size_t SystemData::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:SystemData)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2347,18 +2416,7 @@ size_t system_data::ByteSizeLong() const {
     }
   }
 
-  // repeated .Process tasks = 6;
-  {
-    unsigned int count = static_cast<unsigned int>(this->tasks_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->tasks(static_cast<int>(i)));
-    }
-  }
-
-  if (_has_bits_[0 / 32] & 7u) {
+  if (_has_bits_[0 / 32] & 15u) {
     // optional .CPU sys_cpu = 1;
     if (has_sys_cpu()) {
       total_size += 1 +
@@ -2380,29 +2438,36 @@ size_t system_data::ByteSizeLong() const {
           *swap_mem_);
     }
 
+    // optional .SysProcess tasks = 6;
+    if (has_tasks()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *tasks_);
+    }
+
   }
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void system_data::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:system_data)
+void SystemData::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:SystemData)
   GOOGLE_DCHECK_NE(&from, this);
-  const system_data* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const system_data>(
+  const SystemData* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const SystemData>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:system_data)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:SystemData)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:system_data)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:SystemData)
     MergeFrom(*source);
   }
 }
 
-void system_data::MergeFrom(const system_data& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:system_data)
+void SystemData::MergeFrom(const SystemData& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:SystemData)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -2410,9 +2475,8 @@ void system_data::MergeFrom(const system_data& from) {
 
   cpus_.MergeFrom(from.cpus_);
   disks_.MergeFrom(from.disks_);
-  tasks_.MergeFrom(from.tasks_);
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 7u) {
+  if (cached_has_bits & 15u) {
     if (cached_has_bits & 0x00000001u) {
       mutable_sys_cpu()->::CPU::MergeFrom(from.sys_cpu());
     }
@@ -2422,44 +2486,47 @@ void system_data::MergeFrom(const system_data& from) {
     if (cached_has_bits & 0x00000004u) {
       mutable_swap_mem()->::Memory::MergeFrom(from.swap_mem());
     }
+    if (cached_has_bits & 0x00000008u) {
+      mutable_tasks()->::SysProcess::MergeFrom(from.tasks());
+    }
   }
 }
 
-void system_data::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:system_data)
+void SystemData::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:SystemData)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void system_data::CopyFrom(const system_data& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:system_data)
+void SystemData::CopyFrom(const SystemData& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:SystemData)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool system_data::IsInitialized() const {
+bool SystemData::IsInitialized() const {
   return true;
 }
 
-void system_data::Swap(system_data* other) {
+void SystemData::Swap(SystemData* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void system_data::InternalSwap(system_data* other) {
+void SystemData::InternalSwap(SystemData* other) {
   using std::swap;
   CastToBase(&cpus_)->InternalSwap(CastToBase(&other->cpus_));
   CastToBase(&disks_)->InternalSwap(CastToBase(&other->disks_));
-  CastToBase(&tasks_)->InternalSwap(CastToBase(&other->tasks_));
   swap(sys_cpu_, other->sys_cpu_);
   swap(phy_mem_, other->phy_mem_);
   swap(swap_mem_, other->swap_mem_);
+  swap(tasks_, other->tasks_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata system_data::GetMetadata() const {
+::google::protobuf::Metadata SystemData::GetMetadata() const {
   protobuf_system_5fdata_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_system_5fdata_2eproto::file_level_metadata[kIndexInFileMessages];
 }
@@ -2477,11 +2544,11 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Memory* Arena::CreateMaybeMessag
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Disk* Arena::CreateMaybeMessage< ::Disk >(Arena* arena) {
   return Arena::CreateInternal< ::Disk >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Process* Arena::CreateMaybeMessage< ::Process >(Arena* arena) {
-  return Arena::CreateInternal< ::Process >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::SysProcess* Arena::CreateMaybeMessage< ::SysProcess >(Arena* arena) {
+  return Arena::CreateInternal< ::SysProcess >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::system_data* Arena::CreateMaybeMessage< ::system_data >(Arena* arena) {
-  return Arena::CreateInternal< ::system_data >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::SystemData* Arena::CreateMaybeMessage< ::SystemData >(Arena* arena) {
+  return Arena::CreateInternal< ::SystemData >(arena);
 }
 }  // namespace protobuf
 }  // namespace google
