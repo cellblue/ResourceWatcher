@@ -21,9 +21,10 @@ message Memory{
 
 message Disk{
     optional string file_system = 1;
-    optional float total = 2;
-    optional float usage = 3;
-    optional string mount = 4;
+    optional int64 capacity = 2;
+    optional int64 available = 3;
+    optional int64 free = 4;
+    optional string mount_point = 5;
 }
 
 message SysProcess{
