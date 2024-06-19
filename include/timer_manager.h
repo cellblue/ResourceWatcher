@@ -31,7 +31,7 @@ public:
 private:
     int epollFd;
     int maxEvents;
-    std::map<int, std::pair<std::string, std::function<void()>>> timers;
+    std::map<int, std::tuple<std::string, std::chrono::milliseconds, std::function<void()>>> timers;
 };
 
 } // namespace resource_watcher
