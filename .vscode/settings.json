@@ -63,6 +63,16 @@
         "random": "cpp",
         "string": "cpp",
         "string_view": "cpp",
-        "charconv": "cpp"
+        "charconv": "cpp",
+        "csignal": "cpp",
+        "strstream": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "future": "cpp",
+        "cfenv": "cpp",
+        "typeindex": "cpp",
+        "shared_mutex": "cpp",
+        "variant": "cpp",
+        "*.ipp": "cpp"
     }
 }

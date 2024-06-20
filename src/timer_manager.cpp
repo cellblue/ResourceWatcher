@@ -18,7 +18,7 @@ void TimerManager::addTimer(std::string name, std::chrono::milliseconds delay, s
         epoll_event ev;
         ev.events = EPOLLIN ;
         ev.data.fd = timerFd;
-        if (epoll_ctl(epollFd, EPOLL_CTL_ADD, timerFd, &ev) == -1) {
+        if (epoll_ctl(epoll_fd_, EPOLL_CTL_ADD, timerFd, &ev) == -1) {
             perror("epoll_ctl");
             exit(EXIT_FAILURE);
         }
@@ -28,15 +28,17 @@ void TimerManager::addTimer(std::string name, std::chrono::milliseconds delay, s
 
 void TimerManager::run(){
      while (true) {
-        epoll_event events[maxEvents];
-        int nfds = epoll_wait(epollFd, events, maxEvents, -1);
+        epoll_event events[max_events_];
+        int nfds = epoll_wait(epoll_fd_, events, max_events_, -1);
         if (nfds == -1) {
             perror("epoll_wait");
             exit(EXIT_FAILURE);
         }
         for (int i = 0; i < nfds; ++i) {
             auto& [timer_id, timer_delay, timer_callback] = timers[events[i].data.fd];
-            timer_callback();
+            thread_pool_.enqueue([&](){
+                timer_callback();
+            });
         }
     }       
 }

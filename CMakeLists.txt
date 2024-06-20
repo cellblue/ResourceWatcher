@@ -13,20 +13,14 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fexceptions -frtti -fsani
 find_package(Protobuf REQUIRED)
 include_directories(${Protobuf_INCLUDE_DIRS})
 
-set(SOURCE_FILES
-    src/main.cpp
-    src/app.cpp
-    src/watcher.cpp
-    src/cpu_watcher.cpp
-    src/memory_watcher.cpp
-    src/process_watcher.cpp
-    src/disk_watcher.cpp
-    src/timer_manager.cpp
+set(SRC_DIR src)
+set(UTILITY_DIR utility)
 
-)
+file(GLOB_RECURSE SRC_FILES "${SRC_DIR}/*.cpp")
+file(GLOB_RECURSE UTILITY_HEADERS "${UTILITY_DIR}/*.hpp")
 
 
-include_directories(include proto)
+include_directories(include proto utility)
 
 
 # Generate protobuf files
@@ -36,7 +30,7 @@ protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${CMAKE_SOURCE_DIR}/proto/system_dat
 
 # Add executable
 
-add_executable(ResourceWatcher ${SOURCE_FILES} ${PROTO_SRCS})
+add_executable(ResourceWatcher ${SRC_FILES} ${UTILITY_HEADERS} ${PROTO_SRCS})
 
 
 # Link protobuf libraries

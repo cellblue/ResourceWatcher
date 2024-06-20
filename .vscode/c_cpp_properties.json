@@ -3,7 +3,8 @@
         {
             "name": "Linux",
             "includePath": [
-                "/usr/include/**"
+                "/usr/include/**",
+                "./utility**"
             ],
             "defines": [],
             "cStandard": "c99",
