@@ -93,6 +93,6 @@ void CPUWatcher::dataCollection() {
     sys_cpu->set_irq_usage(getIrqUsage());
     sys_cpu->set_softirq_usage(getSoftirqUsage());
     sys_cpu->set_running_time(getRunningTime());
-    std::cout << sys_cpu->DebugString() << std::endl;
+    // std::cout << sys_cpu->DebugString() << std::endl;
 }
 } // namespace resource_watcher

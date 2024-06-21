@@ -33,7 +33,7 @@ void DiskWatcher::dataCollection(){
         disk_pb->set_available(disk_info.available);
         disk_pb->set_free(disk_info.free);
         disk_pb->set_mount_point(disk_info.mount_point.data());
-        std::cout << disk_pb->DebugString() << std::endl;
+        // std::cout << disk_pb->DebugString() << std::endl;
     }
 }
 

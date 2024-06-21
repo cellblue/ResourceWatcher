@@ -39,6 +39,13 @@ void TimerManager::run(){
             thread_pool_.enqueue([&](){
                 timer_callback();
             });
+            itimerspec its;
+            its.it_value = {timer_delay.count() / 1000, (timer_delay.count() % 1000) * 1000000L};
+            its.it_interval = {timer_delay.count() / 1000, (timer_delay.count() % 1000) * 1000000L};
+            if (timerfd_settime(events[i].data.fd, 0, &its, nullptr) == -1) {
+                perror("timerfd_settime");
+                exit(EXIT_FAILURE);
+            }
         }
     }       
 }

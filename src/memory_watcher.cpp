@@ -55,6 +55,10 @@ void MemoryWatcher::readMemInfo(){
 }
 
 void MemoryWatcher::dataCollection(){
+    // auto now = std::chrono::system_clock::now();
+    // auto timestamp = std::chrono::time_point_cast<std::chrono::milliseconds>(now);
+    // auto millis = timestamp.time_since_epoch().count();
+    // std::cout << "Current time in milliseconds since epoch: " << millis << std::endl;
     readMemInfo();
     
     auto phy_mem = Watcher::sys_data_->mutable_phy_mem();
@@ -64,15 +68,13 @@ void MemoryWatcher::dataCollection(){
     phy_mem->set_free(getPhyFree());
     phy_mem->set_shared(getPhyShared());
     phy_mem->set_buffer_and_cached(getPhyBufferAndCached());
-    std::cout << phy_mem->DebugString() << std::endl;
+    // std::cout << phy_mem->DebugString() << std::endl;
 
     auto swap_mem = Watcher::sys_data_->mutable_swap_mem();
     swap_mem->set_name("swap_mem");
     swap_mem->set_total(getSwapTotal());
     swap_mem->set_used(getSwapUsed());
     swap_mem->set_free(getSwapFree());
-    std::cout << swap_mem->DebugString() << std::endl;
-    
-
+    // std::cout << swap_mem->DebugString() << std::endl;
 }
 } // namespace resource_watcher

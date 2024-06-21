@@ -68,6 +68,6 @@ void ProcessWatcher::dataCollection(){
     tasks->set_sleeping(getSleeping());
     tasks->set_stopped(getStopped());
     tasks->set_zombie(getZombie());
-    std::cout << tasks->DebugString() << std::endl;
+    // std::cout << tasks->DebugString() << std::endl;
 }
 } // namespace resource_watcher
